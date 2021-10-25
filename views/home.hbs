@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Express Retake Exam January 2019</title>
+    <link href="../static/css/site.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand">Video Tutorials</a>
+
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home </a>
+                </li>
+                {{#if loggedIn}}
+                <li class="nav-item">
+                    <a class="nav-link">Welcome, {{username}}</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                {{else}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
+                {{/if}}
+
+            </ul>
+        </nav>
+
+        
+
+        <main>
+            <h1 class="text-center">Courses</h1>
+            {{#if loggedIn}}
+                <section>
+                    <a href="/course/create" class="btn btn-warning ">Create Course</a>
+                    <form class="search float-right">
+                        <label>Search: </label>
+                        <input type="text">
+                        <input type="submit" class="btn btn-info" value="Search">
+                    </form>
+                </section>
+            {{/if}}
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Video Tutorials</h1>
+                    <p class="lead">Start Self-Study Today: It'll Change Your Life</p>
+                </div>
+            </div>
+            {{#if loggedIn}}
+            <div>
+                <h1 class="text-center">Courses</h1>
+                <div class="container mt-3">
+                    <div class="row d-flex justify-content-center">
+                        {{#each courseList}}
+                            {{#if isPublic}}
+                                <div class="card-deck">
+                                    <div class="card mb-4">
+                                        <img class="card-img-top"
+                                            src="{{imgURL}}"
+                                            alt="Card image cap" width="400">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{title}}</h4>
+                                        </div>
+                                        <div class="card-footer">
+                                            <a href="/details/{{_id}}"><button type="button" class="btn btn-info">Details</button></a>
+                                            <small class="float-right">{{createdAt}}</small>
+                                        </div>
+                                    </div>
+                                {{/if}}
+                            {{else}}
+                                <h4 class="text-center">No courses...</h4>
+                            {{/each}}
+                    </div>
+
+                </div>
+            </div>
+            {{else}}
+            <div>
+                <h1 class="text-center">Top Courses</h1>
+                <div class="container mt-3">
+                    <div class="row d-flex justify-content-center">
+                        {{#each topCourses}}
+                            {{#if isPublic}}
+                                <div class="card-deck">
+                                    <div class="card mb-4">
+                                        <img class="card-img-top"
+                                            src="{{imgURL}}"
+                                            alt="Card image cap" width="400">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{title}}</h4>
+                                        </div>
+                                        <div class="card-footer">
+                                            <a href="/details/{{_id}}"><button type="button" class="btn btn-info">Details</button></a>
+                                            <small class="float-right">{{createdAt}}</small>
+                                        </div>
+                                    </div>
+                                {{/if}}
+                            {{else}}
+                                <h4 class="text-center">No courses...</h4>
+                            {{/each}}
+                    </div>
+
+                </div>
+            </div>
+            {{/if}}
+        </main>
+        <footer class="page-footer font-small">
+            <div class="footer-copyright text-center py-3">© 2019
+                <a href="/">Express Fundamentals</a>
+            </div>
+        </footer>
+
+    </div>
+</body>
+
+</html>

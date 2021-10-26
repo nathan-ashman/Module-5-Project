@@ -42,7 +42,7 @@
 
         <main>
             <div class="container">
-                <h1 class="my-4">Course title : ExpressJS
+                <h1 class="my-4">Course title : {{title}}
                 </h1>
 
                 <div class="row">
@@ -55,7 +55,7 @@
 
                     <div class="col-md-4 text-center">
                         <h3 class="my-3">Course Description</h3>
-                        <p>ExpressJS is ...</p>
+                        <p>{{description}}</p>
                         {{#if areCreator}}
                             <a class="btn btn-danger" href="/course/delete/{{id}}">Delete</a>
                             <a class="btn btn-warning" href="/course/edit/{{id}}">Edit</a>

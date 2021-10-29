@@ -31,7 +31,9 @@ module.exports = async (req, res) => {
     }else {
         context.isError = true;
         if(!isAtLeast5)
-        context.errMsg = 'inputs must be at least 5 characters.';
+        context.errMsg = `inputs must be at least 5 characters. (username ${username.length} characters and password ${password.length} characters.)`;
+        //        context.errMsg = `description must be at least 20 characters and at most 50 characters. (${description.length} characters long.)`;
+
         else
         context.errMsg = 'invalid data.';
         res.render('login', context);

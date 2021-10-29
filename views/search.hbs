@@ -54,17 +54,10 @@
                     </form>
                 </section>
             {{/if}}
-            <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                    <h1 class="display-4">Video Tutorials</h1>
-                    <p class="lead">Start Self-Study Today: It'll Change Your Life</p>
-                </div>
-            </div>
-            {{#if loggedIn}}
             <div>
                 <div class="container mt-3">
                     <div class="row d-flex justify-content-center">
-                        {{#each courseList}}
+                        {{#each matchingCourses}}
                             {{#if isPublic}}
                                 <div class="card-deck">
                                     <div class="card mb-4">
@@ -87,31 +80,6 @@
 
                 </div>
             </div>
-            {{else}}
-            <div>
-                <h1 class="text-center">Top Courses</h1>
-                <div class="container mt-3">
-                    <div class="row d-flex justify-content-center">
-                        {{#each topCourses}}
-                            {{#if isPublic}}
-                                <div class="card-deck">
-                                    <div class="card mb-4">
-                                        <img class="card-img-top"
-                                            src="{{imgURL}}"
-                                            alt="Card image cap" width="400">
-                                        <div class="card-body">
-                                            <h4 class="card-title">{{title}}</h4>
-                                        </div>
-                                    </div>
-                                {{/if}}
-                            {{else}}
-                                <h4 class="text-center">No courses...</h4>
-                            {{/each}}
-                    </div>
-
-                </div>
-            </div>
-            {{/if}}
         </main>
         <footer class="page-footer font-small">
             <div class="footer-copyright text-center py-3">© 2019

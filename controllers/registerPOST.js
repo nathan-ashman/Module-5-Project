@@ -29,7 +29,7 @@ module.exports = (req, res) => {
     }else {
         context.isError = true;
         if(!isAtLeast5 || !isEnglish)
-        context.errMsg = 'inputs must be at least 5 English characters.';
+        context.errMsg = `inputs must be at least 5 English characters. (username ${reqBody.username.length} characters and password ${reqBody.password.length} characters.)`;
         else if(!passSame)
         context.errMsg = 'passwords must be the same.';
         res.render('register', context);

@@ -7,6 +7,7 @@ let editGET = require('../controllers/editGET');
 let editPOST = require('../controllers/editPOST');
 let deleteCourse = require('../controllers/delete');
 const enroll = require('../controllers/enroll');
+let search = require('../controllers/search');
 module.exports = (app)=>{
     app.get('/', homeGET);
 
@@ -35,6 +36,7 @@ module.exports = (app)=>{
     app.get('/course/delete/:id', deleteCourse);
     app.get('/course/enroll/:id', enroll);
 
+    app.get('/search', search);
 
     app.get('/logout', (req, res)=>{
         res.clearCookie('username');

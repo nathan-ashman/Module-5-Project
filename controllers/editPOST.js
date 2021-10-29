@@ -26,7 +26,7 @@ module.exports = async (req, res)=>{
         if(!titleValid)
         context.errMsg = 'title must be at least 4 characters.';
         else if(!descriptionValid)
-        context.errMsg = 'description must be at least 20 characters.';
+        context.errMsg = `description must be at least 20 characters and at most 50 characters. (${description.length} characters long.)`;
         else if(!imgValid)
         context.errMsg = 'image url must start with http/https.';
         res.render('edit', context);

@@ -49,7 +49,7 @@
                     <a href="/course/create" class="btn btn-warning ">Create Course</a>
                     <form class="search float-right" method="GET" action="/search">
                         <label for="search">Search: </label>
-                        <input type="text" name="search">
+                        <input type="text" name="search" value="{{search}}">
                         <button type="submit" class="btn btn-info">Search</button>
                     </form>
                 </section>
@@ -61,7 +61,7 @@
                             {{#if isPublic}}
                                 <div class="card-deck">
                                     <div class="card mb-4">
-                                        <img class="card-img-top"
+                                        <img class="card-img-top" id="matchingImg"
                                             src="{{imgURL}}"
                                             alt="Card image cap" width="400">
                                         <div class="card-body">
@@ -74,7 +74,7 @@
                                     </div>
                                 {{/if}}
                             {{else}}
-                                <h4 class="text-center">No courses...</h4>
+                                <h4 class="text-center">Oops, there are no courses that match your search!</h4>
                             {{/each}}
                     </div>
 

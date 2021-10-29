@@ -8,7 +8,8 @@ module.exports = async (req, res)=>{
     console.log(query);
     let cookies = req.cookies;
     let context = {
-        layout:false
+        layout:false,
+        search: query.search
     }
     
     if(cookies.username){
@@ -44,8 +45,7 @@ module.exports = async (req, res)=>{
     if(filteredCourses.length > 0){
         context.matchingCourses = filteredCourses.map(c=>c.toJSON());
     }else {
-        context.matchingCourses = null;
+        context.matchingCourses = false;
     }
-
     res.render('search', context);
 }
